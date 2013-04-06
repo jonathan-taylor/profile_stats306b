@@ -1,6 +1,5 @@
 $.getScript('/static/js/slide_meta.js');
 
-console.log('none');
 MathJax.Hub.Config({
                         TeX: {
 			   equationNumbers : { autoNumber: "AMS"},
@@ -16,5 +15,15 @@ MathJax.Hub.Config({
                     styles: {'.MathJax_Display': {"margin": 4}}
                 }
 });
+
+console.log('loading header');
+$.get('/static/tex/header.tex', function(data) {
+	var newdiv = $('<div id="mathjaxheader"/>');
+	console.log('Mathjax header load was performed.');
+	$('body').append(newdiv);
+	$('#mathjaxheader').text("$$ " + data + " $$");
+	MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjaxheader']);
+    });
 MathJax.Hub.Update();
-console.log('mathjaxconfig')
+
+
