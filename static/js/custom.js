@@ -16,6 +16,7 @@ MathJax.Hub.Config({
                 }
 });
 
+
 console.log('loading header');
 $.get('/static/tex/header.tex', function(data) {
 	var newdiv = $('<div id="mathjaxheader"/>');
@@ -25,5 +26,4 @@ $.get('/static/tex/header.tex', function(data) {
 	MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjaxheader']);
     });
 MathJax.Hub.Update();
-
 
