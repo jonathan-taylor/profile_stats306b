@@ -47,6 +47,26 @@
     CellToolbar.register_callback('exercise.outputbox',checkbox_output);
     exercise_preset.push('exercise.outputbox');
 
+    var checkbox_start = CellToolbar.utils.checkbox_ui_generator('Start?',
+         // setter
+         function(cell, value){
+             // we check that the slideshow namespace exist and create it if needed
+             if (cell.metadata.exercise == undefined){cell.metadata.exercise = {}}
+             // set the value
+             cell.metadata.exercise.start = value
+								  },
+         //geter
+         function(cell){ var ns = cell.metadata.exercise;
+             // if the slideshow namespace does not exist return `undefined`
+             // (will be interpreted as `false` by checkbox) otherwise
+             // return the value
+			 return (ns == undefined)? undefined: ns.start
+             }
+    );
+
+    CellToolbar.register_callback('exercise.startbox',checkbox_start);
+    exercise_preset.push('exercise.startbox');
+
     var checkbox_input = CellToolbar.utils.checkbox_ui_generator('Input?',
          // setter
          function(cell, value){
