@@ -15,7 +15,7 @@
         src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
     }
     div.cell{
-        width:800px;
+        width:750px;
         margin-left:auto;
         margin-right:auto;
     }
@@ -30,7 +30,7 @@
         font-family: Computer Modern, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
         line-height: 145%;
         font-size: 120%;
-        width:800px;
+        width:750px;
         margin-left:auto;
         margin-right:auto;
     }
