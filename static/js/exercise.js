@@ -27,6 +27,26 @@
 
     var exercise_preset = [];
 
+    var checkbox_solution = CellToolbar.utils.checkbox_ui_generator('Solution?',
+         // setter
+         function(cell, value){
+             // we check that the slideshow namespace exist and create it if needed
+             if (cell.metadata.exercise == undefined){cell.metadata.exercise = {}}
+             // set the value
+             cell.metadata.exercise.solution = value
+								  },
+         //geter
+         function(cell){ var ns = cell.metadata.exercise;
+             // if the slideshow namespace does not exist return `undefined`
+             // (will be interpreted as `false` by checkbox) otherwise
+             // return the value
+			 return (ns == undefined)? undefined: ns.solution
+             }
+    );
+
+    CellToolbar.register_callback('exercise.solutionbox',checkbox_solution);
+    exercise_preset.push('exercise.solutionbox');
+
     var checkbox_output = CellToolbar.utils.checkbox_ui_generator('Output?',
          // setter
          function(cell, value){
